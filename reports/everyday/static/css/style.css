@@ -1,0 +1,14 @@
+#work_list{
+	position: absolute;
+	z-index: 1;
+	border: 1px;
+	top: 130px;
+	left: 50px;
+	opacity: 1;
+}
+#id_work{
+	autocomplete:off;
+}
+.post-form{
+	autocomplete:off;
+}
