@@ -1,0 +1,28 @@
+﻿{% load staticfiles %}
+<head>
+	<meta charset="UTF-8">
+	<title>home page</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+{% block content %}
+<div>
+
+    	<h1><a href="/">Объявления</a></h1>
+</div>
+
+<form method="POST" class="post-form" autocomplete="off">{% csrf_token %}
+
+       {{ form }}
+       <button type="submit" class="save btn btn-default">Отфильтровать</button>
+</form>
+{% endblock %}
+
+{% for ad in ads %}
+    <div style="border-style: double; border-width: thick">
+        <p>Дата опубликования: {{ ad.created_date }}</p>
+        <p>{{ ad.phone }}</p>
+        <p>{{ ad.text|linebreaksbr }}</p>
+	<p>{{ ad.activ|linebreaksbr }}</p>
+	{% for tag in ad.tegs.all %} {{ tag }} {% endfor %}
+    </div>
+{% endfor %}
